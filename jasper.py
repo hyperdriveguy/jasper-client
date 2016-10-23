@@ -18,7 +18,7 @@ from client.conversation import Conversation
 # Add jasperpath.LIB_PATH to sys.path
 sys.path.append(jasperpath.LIB_PATH)
 
-parser = argparse.ArgumentParser(description='Jasper Voice Control Center')
+parser = argparse.ArgumentParser(description='Moroni Voice Control Center')
 parser.add_argument('--local', action='store_true',
                     help='Use text input instead of a real microphone')
 parser.add_argument('--no-network-check', action='store_true',
@@ -114,15 +114,16 @@ class Jasper(object):
             salutation = ("How can I be of service, %s?"
                           % self.config["first_name"])
         else:
-            salutation = "How can I be of service?"
+            salutation = "Anything I can do?"
         self.mic.say(salutation)
 
-        conversation = Conversation("JASPER", self.mic, self.config)
+        conversation = Conversation("MORONI", self.mic, self.config)
         conversation.handleForever()
 
 if __name__ == "__main__":
 
     print("*******************************************************")
+    print("*                   MORONI, BASED ON:                 *")
     print("*             JASPER - THE TALKING COMPUTER           *")
     print("* (c) 2015 Shubhro Saha, Charlie Marsh & Jan Holthuis *")
     print("*******************************************************")
@@ -135,7 +136,7 @@ if __name__ == "__main__":
         logger.setLevel(logging.DEBUG)
 
     if not args.no_network_check and not diagnose.check_network_connection():
-        logger.warning("Network not connected. This may prevent Jasper from " +
+        logger.warning("Network not connected. This may prevent Moroni from " +
                        "running properly.")
 
     if args.diagnose:
